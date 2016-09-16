@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @trump.message %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @trump.user.email %>
+</p>
+
+<%= link_to 'Edit', edit_trump_path(@trump) %> |
+<%= link_to 'Back', trumps_path %>

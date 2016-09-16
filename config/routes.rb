@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :trumps
   root 'pages#feed'
   get 'pages/feed'
 

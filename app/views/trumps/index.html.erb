@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Trumps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Message</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trumps.each do |trump| %>
+      <tr>
+        <td><%= trump.message %></td>
+        <td><%= trump.user.email %></td>
+        <td><%= link_to 'Show', trump %></td>
+        <td><%= link_to 'Edit', edit_trump_path(trump) %></td>
+        <td><%= link_to 'Destroy', trump, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Trump', new_trump_path %>
