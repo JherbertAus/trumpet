@@ -15,7 +15,11 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+
+# gem for Devise for log in authentication
 gem "devise"
+#gem gem 'bootstrap-sass for CSS implementation
+gem 'bootstrap-sass', '~> 3.3.6'
 
 
 # Use jquery as the JavaScript library
