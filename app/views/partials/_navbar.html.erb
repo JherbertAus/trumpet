@@ -1,0 +1,29 @@
+
+
+<div id="navbar" class="navbar-static-top">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#"></a></li>
+            <%= link_to "Trumpet", root_path, class: "navbar-brand" %>
+
+          <ul class="navbar-right">
+
+                <% if user_signed_in? %>
+                          <li>
+                              <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+                              </li>
+                                  <li>
+                                 <%= link_to('Edit registration', edit_user_registration_path) %>
+                               </li>
+                               <li> <button type="button" class="btn btn-default navbar-btn">Trump</button>
+                               </li>
+                              <% else %>
+                                <li>
+                                <%= link_to('Login', new_user_session_path)  %>
+                                    <li>
+                                    <%= link_to('Register', new_user_registration_path)  %>
+                                    </li>
+                              </li>
+                        <% end %>
+          </ul>
+          
+        </div>
