@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   resources :trumps do
   member do
-    put "like", to: "links#upvote"
-    put "dislike", to: "links#downvote"
+    put "like", to: "links#vote"
+
   end
 end
 

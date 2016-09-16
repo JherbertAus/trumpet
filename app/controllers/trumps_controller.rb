@@ -1,5 +1,5 @@
 class TrumpsController < ApplicationController
-  before_action :set_trump, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+  before_action :set_trump, only: [:show, :edit, :update, :destroy, :vote]
 
   # GET /trumps
   # GET /trumps.json
@@ -26,7 +26,7 @@ class TrumpsController < ApplicationController
   def create
     @trump = Trump.new(trump_params)
     @trump.user_id = current_user.id if current_user
-    #Allows tweets if the current user, implemented for extra security.
+    #allows tweets if the current user, implemented for extra security.
 
 
     respond_to do |format|
@@ -64,13 +64,22 @@ class TrumpsController < ApplicationController
     end
   end
 
-  def upvote
+  def vote
+
+    case @current_user.voted_as_when_voted_for(@trump)
+    when nil
+      @trump.upvote_by current_user
+    when true
+      @trump.unvote_by current_user
+    when false
+      @trump.upvote_by current_user
+    else
+
+
     @trump.upvote_by current_user
     redirect_to trumps_path
   end
 
-  def downvote
-    @link.downvote_by current_user
     redirect_to trumps_path
 end
 

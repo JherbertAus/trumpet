@@ -2,12 +2,12 @@
 
 <h1>Trumps</h1>
 
-<table>
+<table class = "table">
   <thead>
     <tr>
       <th>Message</th>
       <th>User</th>
-      <th colspan="6"></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -18,9 +18,20 @@
         <td><%= trump.message %></td>
         <td><%= trump.user.email %></td>
         <td><%= link_to 'Show', trump %></td>
-        <td><%= link_to "upvote", like_trump_path(trump), method: :put %></td>
-        <td><%= link_to "downvote", dislike_trump_path(trump), method: :put %></td>
+        <td>
+        <%= if current_user %>
+         <%= link_to like_trump_path(trump), method: :put do %>
+
+                    <%= current_user.vote(tweet) == true ?
+                     fa_icon ("heart") :  if   %>
+                     <% end %>
+
+               <% else %>
+                  <%= fa_icon ("heart-o") %>
+               <% end %>
+             </td>
         <td><%= link.score %></td>
+
         <td><%= link_to 'Edit', edit_trump_path(trump) %></td>
         <td><%= link_to 'Destroy', trump, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
