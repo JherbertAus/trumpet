@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  resources :trumps
+
+  resources :trumps do
+  member do
+    put "like", to: "links#upvote"
+    put "dislike", to: "links#downvote"
+  end
+end
+
   root 'pages#feed'
   get 'pages/feed'
 

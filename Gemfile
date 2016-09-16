@@ -18,9 +18,12 @@ gem 'coffee-rails', '~> 4.2'
 
 # gem for Devise for log in authentication
 gem "devise"
-#gem gem 'bootstrap-sass for CSS implementation
+#gem 'bootstrap-sass for CSS implementation
 gem 'bootstrap-sass', '~> 3.3.6'
-
+#gem adds social interaction within trumps
+gem 'acts_as_votable'
+#using font awesome to handle icon management
+gem 'font-awesome-sass', '~> 4.6.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

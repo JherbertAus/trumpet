@@ -1,5 +1,5 @@
 class TrumpsController < ApplicationController
-  before_action :set_trump, only: [:show, :edit, :update, :destroy]
+  before_action :set_trump, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
   # GET /trumps
   # GET /trumps.json
@@ -25,6 +25,7 @@ class TrumpsController < ApplicationController
   # POST /trumps.json
   def create
     @trump = Trump.new(trump_params)
+    @trump.user_id = current_user.id if current_user
     #Allows tweets if the current user, implemented for extra security.
 
 
@@ -62,6 +63,16 @@ class TrumpsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def upvote
+    @trump.upvote_by current_user
+    redirect_to trumps_path
+  end
+
+  def downvote
+    @link.downvote_by current_user
+    redirect_to trumps_path
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.
